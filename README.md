@@ -292,10 +292,10 @@ Hyperparameter tuning bertujuan untuk mencari kombinasi parameter terbaik agar p
    $$
    
    <br>Keterangan:
-   - TP = True Positive
-   - TN = True Negative
-   - FP = False Positive
-   - FN = False Negative.
+   - TP = True Positive (Data positif yang diprediksi benar sebagai positif)
+   - TN = True Negative (Data negatif yang diprediksi benar sebagai negatif)
+   - FP = False Positive (Data negatif yang salah diprediksi sebagai positif)
+   - FN = False Negative (Data positif yang salah diprediksi sebagai negatif)
 
 2. Precision, yaitu proporsi data yang diprediksi positif yang benar-benar positif. Metrik ini cocok digunakan saat false positive harus diminimalkan.
    <br>Formula:<br>
