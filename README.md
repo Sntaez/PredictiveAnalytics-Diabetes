@@ -355,7 +355,7 @@ $$
 - Feature Importance Berdasarkan Random Forest (setelah tuning)
   <br>![feature_important](img/feature_important.png)
 
-**Kesimpulan Hasil Evaluasi:**
+
 <br>Berdasarkan hasil evaluasi menggunakan metrik-metrik seperti accuracy, precision, recall, F1-score, dan ROC-AUC, dapat disimpulkan bahwa model Random Forest terutama setelah dilakukan hyperparameter tuning merupakan model terbaik secara keseluruhan untuk kasus ini. Hal ini didasarkan pada poin-poin berikut:
 1. Performa Evaluasi Terbaik:
    - Model Random Forest (setelah tuning) memperoleh skor tertinggi pada sebagian besar metrik penting seperti accuracy (97.07%), precision (88%), F1-score (0.65), dan ROC-AUC (0.947).
