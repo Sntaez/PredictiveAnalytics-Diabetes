@@ -355,12 +355,23 @@ $$
 - Feature Importance Berdasarkan Random Forest (setelah tuning)
   <br>![feature_important](img/feature_important.png)
 
-**Kesimpulan:**
-- Model Random Forest setelah tuning adalah yang paling bagus secara keseluruhan, karena:
-  - Memiliki akurasi, precision, f1-score, dan ROC-AUC tertinggi.
-  - Walaupun recall-nya sedikit menurun dibanding SVC dan Logistic Regression, trade-off ini masih wajar karena precision dan stabilitas meningkat.
-- Random Forest (sebelum tuning) sudah cukup baik, tetapi tuning berhasil meningkatkan test accuracy sedikit lebih tinggi, meskipun train accuracy juga ikut meningkat hingga hampir 1.
-- Random Forest (setelah tuning) melakukan generalisasi yang kuat meskipun sedikit overfitting (ditandai dengan selisih train-test yang cukup besar).
+**Kesimpulan Hasil Evaluasi:**
+Berdasarkan hasil evaluasi menggunakan metrik-metrik seperti accuracy, precision, recall, F1-score, dan ROC-AUC, dapat disimpulkan bahwa model Random Forest terutama setelah dilakukan hyperparameter tuning merupakan model terbaik secara keseluruhan untuk kasus ini. Hal ini didasarkan pada poin-poin berikut:
+1. Performa Evaluasi Terbaik:
+   - Model Random Forest (setelah tuning) memperoleh skor tertinggi pada sebagian besar metrik penting seperti accuracy (97.07%), precision (88%), F1-score (0.65), dan ROC-AUC (0.947).
+   - Meskipun recall-nya (0.51) lebih rendah dibandingkan model Logistic Regression (0.88) dan SVC (0.93), trade-off ini masih dapat diterima, terutama karena precision meningkat secara signifikan. Hal ini berarti model lebih baik dalam menghindari false positives, yang mungkin penting dalam konteks data ini tergantung pada problem statement.
+2. Trade-off yang Seimbang:
+   - Dalam konteks klasifikasi yang memiliki ketimpangan kelas (class imbalance), F1-score dan ROC-AUC menjadi metrik yang lebih representatif dibandingkan hanya mengandalkan accuracy.
+   - Random Forest (setelah tuning) memberikan keseimbangan terbaik antara precision dan recall, ditunjukkan dari F1-score tertinggi (0.65), yang merepresentasikan kompromi optimal antara keduanya.
+3. Performa Training dan Testing:
+   - Tuning pada Random Forest meningkatkan test accuracy dari 96.97% menjadi 97.07%, menunjukkan bahwa tuning memberikan peningkatan meskipun tidak terlalu besar.
+   - Meskipun train accuracy-nya sangat tinggi (99.91%), yang menunjukkan adanya sedikit overfitting, namun selisih train-test accuracy masih dalam batas yang dapat diterima, dan generalisasi model masih tergolong baik.
+4. Model Lain sebagai Pembanding:
+   - KNN dan Decision Tree menunjukkan performa yang tinggi di training set namun mengalami penurunan di test set, mengindikasikan overfitting yang lebih parah.
+   - Logistic Regression dan SVC memiliki recall tinggi namun precision dan F1-score-nya sangat rendah, yang kurang ideal jika false positive berdampak signifikan dalam konteks penggunaan model.
+
+Kesimpulan akhir:
+Model Random Forest dengan hyperparameter tuning adalah pilihan paling tepat sebagai model terbaik, karena memberikan keseimbangan performa terbaik dan hasil evaluasi yang unggul secara umum. Pemilihan metrik seperti F1-score dan ROC-AUC yang lebih representatif daripada sekadar akurasi sangat penting dalam konteks ini, terutama jika data tidak seimbang atau konsekuensi kesalahan klasifikasi berbeda antara kelas.
 
 ## Conclusion
 1. Menjawab Problem Statement
