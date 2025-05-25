@@ -72,9 +72,9 @@ Umumnya, HbA1c > 6.5% menunjukkan diabetes.
 5. Deskripsi statistik fitur numerik dataset
    <br>![statistik](img/describe.png)
 6. Memeriksa dan menangani missing value
-   <br>![image](https://github.com/user-attachments/assets/b74f24f1-3ee8-46b6-92be-bcabe0e85acc)
+   <br>![image](img/missing_value1.png)
    <br>Tidak terdapat missing value secara eksplisit, tetapi ketika diperiksa, salah satu kategori smoking_history adalah No Info yang mengindikasikan missing value. Hal di atas dilakukan agar 'No Info' pada kolom smoking_history dapat diperlakukan sebagai missing value secara eksplisit. Hal ini dapat memudahkan proses imputasi atau penanganan missing value di tahap berikutnya. 
-   <br>![image](https://github.com/user-attachments/assets/694b8c44-60da-4f8e-8443-f5cdcaa3a15e)
+   <br>![image](img/missing_value2.png)
    <br>Selanjutnya mengisi missing value pada kolom smoking_history dengan label 'Missing' sebagai kategori khusus untuk memudahkan proses encoding dan memastikan semua data tetap digunakan dalam modeling. Tujuannya adalah agar siap untuk proses encoding dan tidak menghilangkan data.
 8. Memeriksa dan menangani outliers
    - `age`
@@ -144,13 +144,14 @@ Umumnya, HbA1c > 6.5% menunjukkan diabetes.
 Pada bagian ini akan dilakukan 3 tahap persiapan data, yaitu:
 1. Encoding Fitur Kategori
    <br>Mengubah data kategorik menjadi numerik agar bisa diproses oleh algoritma machine learning, dalam kasus ini menggunakan One-Hot Encoding dan Label Encoding. Karena algoritma machine learning pada umumnya hanya dapat memproses data numerik, sehingga untuk memudahkan proses pemodelan, data kategorik harus diencoding.
-   <br>![image](https://github.com/user-attachments/assets/7597b6e8-fddc-4422-9da9-710160ca371b)
+   <br>![image](img/encoder.png)
+
 2. Train-Test-Split
    <br>Dataset dibagi menjadi data latih (train) dan data uji (test) menggunakan train_test_split dari sklearn dengan rasio 80:20. Hal ini dilakukan untuk memisahkan data pada proses pelatihan dan evaluasi model.
-   <br>![image](https://github.com/user-attachments/assets/5587e676-505f-463c-878b-5cfa4b867903)
+   <br>![image](img/split.png)
 3. Standarisasi
    <br>Proses penskalaan fitur numerik agar berada dalam rentang yang seragam menggunakan StandardScaler. Hal ini bertujuan agar model bekerja adil dan optimal terhadap semua fitur, serta tidak ada bias skala.
-   <br>![image](https://github.com/user-attachments/assets/a5adbe2c-5efc-4514-a59f-b9177d6d6204)
+   <br>![image](img/standarisasi.png)
 
 ## Modeling
 Tahapan ini bertujuan membangun model machine learning untuk memprediksi status diabetes (positif/negatif) berdasarkan fitur kesehatan yang tersedia. Pada proyek ini, saya membangun lima model machine learning, yaitu:
