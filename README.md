@@ -380,7 +380,7 @@ Kesimpulan akhir:
    - Selain itu, melalui analisis feature importance dari model Random Forest, dapat disimpulkan bahwa HbA1c_level, blood_glucose_level, gender, dan bmi merupakan faktor yang paling berpengaruh terhadap kemungkinan seseorang mengidap diabetes.
 
 2. Mencapai Goals
-   Proyek ini berhasil mengembangkan sistem klasifikasi diabetes berbasis machine learning yang:
+   <br>Proyek ini berhasil mengembangkan sistem klasifikasi diabetes berbasis machine learning yang:
     - Mampu mengklasifikasikan status diabetes secara akurat menggunakan data medis.
     - Membandingkan performa lima algoritma klasifikasi secara objektif menggunakan metrik evaluasi seperti accuracy, precision, recall, F1-score, dan ROC-AUC.
     - Menentukan algoritma optimal (Random Forest) melalui hyperparameter tuning untuk meningkatkan performa deteksi.
