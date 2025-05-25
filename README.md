@@ -356,7 +356,7 @@ $$
   <br>![feature_important](img/feature_important.png)
 
 **Kesimpulan Hasil Evaluasi:**
-Berdasarkan hasil evaluasi menggunakan metrik-metrik seperti accuracy, precision, recall, F1-score, dan ROC-AUC, dapat disimpulkan bahwa model Random Forest terutama setelah dilakukan hyperparameter tuning merupakan model terbaik secara keseluruhan untuk kasus ini. Hal ini didasarkan pada poin-poin berikut:
+<br>Berdasarkan hasil evaluasi menggunakan metrik-metrik seperti accuracy, precision, recall, F1-score, dan ROC-AUC, dapat disimpulkan bahwa model Random Forest terutama setelah dilakukan hyperparameter tuning merupakan model terbaik secara keseluruhan untuk kasus ini. Hal ini didasarkan pada poin-poin berikut:
 1. Performa Evaluasi Terbaik:
    - Model Random Forest (setelah tuning) memperoleh skor tertinggi pada sebagian besar metrik penting seperti accuracy (97.07%), precision (88%), F1-score (0.65), dan ROC-AUC (0.947).
    - Meskipun recall-nya (0.51) lebih rendah dibandingkan model Logistic Regression (0.88) dan SVC (0.93), trade-off ini masih dapat diterima, terutama karena precision meningkat secara signifikan. Hal ini berarti model lebih baik dalam menghindari false positives, yang mungkin penting dalam konteks data ini tergantung pada problem statement.
@@ -371,7 +371,7 @@ Berdasarkan hasil evaluasi menggunakan metrik-metrik seperti accuracy, precision
    - Logistic Regression dan SVC memiliki recall tinggi namun precision dan F1-score-nya sangat rendah, yang kurang ideal jika false positive berdampak signifikan dalam konteks penggunaan model.
 
 Kesimpulan akhir:
-Model Random Forest dengan hyperparameter tuning adalah pilihan paling tepat sebagai model terbaik, karena memberikan keseimbangan performa terbaik dan hasil evaluasi yang unggul secara umum. Pemilihan metrik seperti F1-score dan ROC-AUC yang lebih representatif daripada sekadar akurasi sangat penting dalam konteks ini, terutama jika data tidak seimbang atau konsekuensi kesalahan klasifikasi berbeda antara kelas.
+<br>Model Random Forest dengan hyperparameter tuning adalah pilihan paling tepat sebagai model terbaik, karena memberikan keseimbangan performa terbaik dan hasil evaluasi yang unggul secara umum. Pemilihan metrik seperti F1-score dan ROC-AUC yang lebih representatif daripada sekadar akurasi sangat penting dalam konteks ini, terutama jika data tidak seimbang atau konsekuensi kesalahan klasifikasi berbeda antara kelas.
 
 ## Conclusion
 1. Menjawab Problem Statement
