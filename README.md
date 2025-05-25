@@ -62,7 +62,71 @@ Umumnya, HbA1c > 6.5% menunjukkan diabetes.
 * `diabetes`: variabel target yang diprediksi dalam dataset, dengan 1 menunjukkan menderita diabetes dan 0 menunjukkan tidak menderita diabetes.
 
 ### Exploratory Data Analysis 
+1. Informasi dataset
+   <br>![Informasi dataset](img/df_info.png) 
+2. Memeriksa duplikat data pada dataset
+   <br>![data duplikat](img/duplikat.png) 
+3. Deskripsi statistik fitur numerik dataset
+   <br>![statistik](img/describe.png)
+4. Memeriksa dan menangani outliers
+   - `age`
+     <br>![age](img/eda-age.png)
+   - `hypertension`
+     <br>![hypertension](img/eda-hypertension.png)
+   - `heart_disease`
+     <br>![heart_disease](img/eda-heart_disease.png)
+   - `bmi`
+     <br>![bmi](img/eda-bmi.png)
+   - `HbA1c_level`
+     <br>![HbA1c_level](img/eda-HbA1c_level.png)
+   - `blood_glucose_level`
+     <br>![blood_glucose_level](img/eda-blood_glucose_level.png)
+   <br> Visualisasi menunjukkan bahwa 'bmi', 'HbA1c_level', 'blood_glucose_level' terdapat outliers sehingga perlu ditangani.
+   <br> Menangani outlier dengan IQR Method, dimana:
+   - Kuartil:
+    <br>Q1 (Kuartil 1) = nilai pada persentil ke-25
+    <br>Q3 (Kuartil 3) = nilai pada persentil ke-75
+   - IQR (Interquartile Range):
+    <br>IQR = Q3 - Q1
+   - Batas Outlier:
+    <br>Lower Bound = Q1 - 1.5 × IQR
+    <br>Upper Bound = Q3 + 1.5 × IQR
+5. Univariate Analysis
+   <br>Melakukan proses analisis data dengan teknik Univariate EDA. Dimana disini data akan dibagi menjadi dua bagian, yaitu numerical features dan categorical. Visualisasi pada bagian ini menunjukkan distribusi masing-masing fitur pada dataset.
+   - Fitur kategorikal
+     - `gender`
+       
+     |  **gender**   | **jumlah sampel**           | **persentase**        |
+     | ---------------| ----------------------------|----------------------|
+     | Female |51179| 58.0 |
+     | Male |369998| 42.0 |
+     | Other |18| 0.0 |
 
+     <br>![cat_features](img/eda-cat_features.png)
+     
+     - `smoking_history`
+     
+     |  **smoking_history**   | **jumlah sampel**           | **persentase**        |
+     | ---------------| ----------------------------|----------------------|
+     |never              |      31249   |     35.4|
+     |Missing             |     31111   |    35.3|
+     |current              |     8349   |    9.5|
+     |former             |       8133   |      9.2|
+     |not current         |      5764   |      6.5|
+     |ever                 |     3589   |      4.1|
+
+     <br>![smoking_history](img/eda-smoking_history.png)
+   - Fitur numerik
+     <br>![num_features](img/eda-num_features.png)
+7. Multivariate Analysis
+   - Fitur kategorikal
+     <br>![cat_corr](img/eda-cat_corr.png)
+     
+   - Fitur numerik
+     <br>![num_corr](img/eda-num_corr.png)
+     <br>![corr_matrix](img/eda-corr_matrix.png)
+     
+  
 
 
 
