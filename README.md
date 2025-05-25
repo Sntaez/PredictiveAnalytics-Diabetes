@@ -350,7 +350,7 @@ $$
 - Perbandingan Metrik pada Setiap Model
   <br>![perbandingan_metrik](img/perbandingan_metrik.png)
 - Perbandingan Hasil Prediksi dan Nilai Aktual (Randomm Forest - setelah tuning)
-  <br>![image](https://github.com/user-attachments/assets/8c2cf833-1ede-43c7-abef-42950d02edbd)
+  <br>![image](img/hasilpred_aktual.png)
 - Feature Importance Berdasarkan Random Forest (setelah tuning)
   <br>![feature_important](img/feature_important.png)
 
