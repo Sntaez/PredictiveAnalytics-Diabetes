@@ -13,8 +13,6 @@ Magliano, D. J., Boyko, E. J., & IDF Diabetes Atlas 10th Edition Scientific Comm
 
 Kavakiotis, I., Tsave, O., Salifoglou, A., Maglaveras, N., Vlahavas, I., & Chouvarda, I. (2017). Machine learning and data mining methods in diabetes research. *Computational and Structural Biotechnology Journal, 15*, 104–116. [https://doi.org/10.1016/j.csbj.2016.12.005](https://doi.org/10.1016/j.csbj.2016.12.005)
 
-Sharma, T., & Shah, M. (2021). A comprehensive review of machine learning techniques on diabetes detection. *Visual Computing for Industry, Biomedicine, and Art, 4*(1), 30. [https://doi.org/10.1186/s42492-021-00097-7](https://doi.org/10.1186/s42492-021-00097-7)
-
 ## Business Understanding
 ### Problem Statements
 - Bagaimana memprediksi status seseorang menderita diabetes (positif/negatif) berdasarkan data kesehatan seperti gender, usia, BMI, level HbA1c, kadar glukosa darah, serta riwayat merokok dan penyakit penyerta (seperti hypertension dan heart disease)?
@@ -63,98 +61,106 @@ Umumnya, HbA1c > 6.5% menunjukkan diabetes.
 
 ### Exploratory Data Analysis 
 1. Informasi dataset
-   <br>![Informasi dataset](img/df_info.png)
+   <br>![Informasi dataset](img/info_data.png)
    - Ada 100.000 baris dalam dataset.
    - Terdapat 9 kolom yaitu: gender, age, hypertension, heart_disease, smoking_history, bmi, HbA1c_level, blood_glucose_level, dan diabetes.
-3. Memeriksa dan menangani duplikat data pada dataset
-   <br>![data duplikat](img/duplikat.png)
-   <br>Terlihat bahwa terdapat data duplikat pada dataset ini, sehingga data duplikat tersebut perlu dihapus agar tidak ada data redudan.
+3. Memeriksa duplikat data pada dataset
+   <br>![data duplikat](img/jumlah_duplikat.png)
+   <br>![data duplikat](img/data_duplikat.png)
+   <br>Terlihat bahwa terdapat data duplikat pada dataset ini sebanyak 3.854, sehingga data duplikat tersebut perlu dihapus agar memudahkan proses modeling nantinya.
 5. Deskripsi statistik fitur numerik dataset
-   <br>![statistik](img/describe.png)
-6. Memeriksa dan menangani missing value
-   <br>![image](img/missing_value1.png)
-   <br>Tidak terdapat missing value secara eksplisit, tetapi ketika diperiksa, salah satu kategori smoking_history adalah No Info yang mengindikasikan missing value. Hal di atas dilakukan agar 'No Info' pada kolom smoking_history dapat diperlakukan sebagai missing value secara eksplisit. Hal ini dapat memudahkan proses imputasi atau penanganan missing value di tahap berikutnya. 
-   <br>![image](img/missing_value2.png)
-   <br>Selanjutnya mengisi missing value pada kolom smoking_history dengan label 'Missing' sebagai kategori khusus untuk memudahkan proses encoding dan memastikan semua data tetap digunakan dalam modeling. Tujuannya adalah agar siap untuk proses encoding dan tidak menghilangkan data.
-8. Memeriksa dan menangani outliers
+   <br>![statistik](img/deskripsi_statistik.png)
+   <br>Secara keseluruhan, statistik ini menunjukkan bahwa dataset memiliki keragaman yang cukup tinggi pada usia dan BMI, dan sebagian besar pasien tidak memiliki penyakit penyerta (hipertensi/penyakit jantung).
+7. Memeriksa missing value
+   <br>![image](img/cek_missing_value.png)
+   <br>Tidak terdapat missing value pada dataset ini.
+8. Memeriksa outliers
    - `age`
-     <br>![age](img/eda-age.png)
+     <br>![age](img/boxplot_age.png)
    - `hypertension`
-     <br>![hypertension](img/eda-hypertension.png)
+     <br>![age](img/boxplot_hypertension.png)
    - `heart_disease`
-     <br>![heart_disease](img/eda-heart_disease.png)
+     <br>![age](img/boxplot_heart_disease.png)
    - `bmi`
-     <br>![bmi](img/eda-bmi.png)
+     <br>![age](img/boxplot_bmi.png)
    - `HbA1c_level`
-     <br>![HbA1c_level](img/eda-HbA1c_level.png)
+     <br>![age](img/boxplot_HbA1c_level.png)
    - `blood_glucose_level`
-     <br>![blood_glucose_level](img/eda-blood_glucose_level.png)
-   <br> Visualisasi menunjukkan bahwa 'bmi', 'HbA1c_level', 'blood_glucose_level' terdapat outliers sehingga perlu ditangani.
-   <br> Menangani outlier dengan IQR Method, dimana:
-   - Kuartil:
-    <br>Q1 (Kuartil 1) = nilai pada persentil ke-25
-    <br>Q3 (Kuartil 3) = nilai pada persentil ke-75
-   - IQR (Interquartile Range):
-    <br>IQR = Q3 - Q1
-   - Batas Outlier:
-    <br>Lower Bound = Q1 - 1.5 × IQR
-    <br>Upper Bound = Q3 + 1.5 × IQR
+     <br>![age](img/boxplot_blood_glucose_level.png)
+   <br>Visualisasi menunjukkan bahwa bmi, HbA1c_level, dan blood_glucose_level terdapat outliers sehingga perlu ditangani.
 9. Univariate Analysis
    <br>Melakukan proses analisis data dengan teknik Univariate EDA. Dimana disini data akan dibagi menjadi dua bagian, yaitu numerical features dan categorical. Visualisasi pada bagian ini menunjukkan distribusi masing-masing fitur pada dataset.
    - Fitur kategorikal
      - `gender`
-       
-     |  **gender**   | **jumlah sampel**           | **persentase**        |
-     | ---------------| ----------------------------|----------------------|
-     | Female |51179| 58.0 |
-     | Male |369998| 42.0 |
-     | Other |18| 0.0 |
+         
+       | Gender | Jumlah Sampel | Persentase (%) |
+       | ------ | ------------- | -------------- |
+       | Female | 58,552        | 58.6           |
+       | Male   | 41,430        | 41.4           |
+       | Other  | 18            | 0.0            |
 
-     <br>![cat_features](img/eda-cat_features.png)
+       <br>![cat_features](img/univariate_gender.png)
+       <br>Dari data persentase dapat kita simpulkan bahwa ebagian besar data didominasi oleh gender Female (58.6%), diikuti oleh Male (41.4%), sementara kategori Other hampir tidak signifikan karena hanya mencakup 0.0% dari total data (hanya 18 sampel).
      
      - `smoking_history`
      
-     |  **smoking_history**   | **jumlah sampel**           | **persentase**        |
-     | ---------------| ----------------------------|----------------------|
-     |never              |      31249   |     35.4|
-     |Missing             |     31111   |    35.3|
-     |current              |     8349   |    9.5|
-     |former             |       8133   |      9.2|
-     |not current         |      5764   |      6.5|
-     |ever                 |     3589   |      4.1|
+        | Smoking History | Jumlah Sampel | Persentase (%) |
+        | --------------- | ------------- | -------------- |
+        | No Info         | 35,816        | 35.8           |
+        | never           | 35,095        | 35.1           |
+        | former          | 9,352         | 9.4            |
+        | current         | 9,286         | 9.3            |
+        | not current     | 6,447         | 6.4            |
+        | ever            | 4,004         | 4.0            |
 
-     <br>![smoking_history](img/eda-smoking_history.png)
+       <br>![smoking_history](img/univariate_smoking_history.png)
+       <br>Mayoritas data berasal dari individu dengan riwayat merokok yang tidak diketahui atau tidak diisi (kategori No Info) sebanyak 35.8%, yang berarti terdapat kekosongan informasi yang cukup besar dalam fitur ini. Selain itu, proporsi terbesar berikutnya adalah yang tidak pernah merokok (kategori never) sebesar 35.1%. Kategori lainnya menunjukkan bahwa sebagian kecil populasi merupakan perokok aktif atau mantan perokok.
    - Fitur numerik
-     <br>![num_features](img/eda-num_features.png)
+     <br>![num_features](img/univariate_num_features.png)
+     <br>Dataset menunjukkan beberapa ketidakseimbangan dan kejanggalan distribusi. Usia tersebar cukup merata namun terdapat outlier signifikan di usia 80, kemungkinan akibat nilai default. Fitur kesehatan seperti hypertension, heart_disease, dan diabetes sangat imbalanced, dengan mayoritas bernilai nol (tidak sakit). Data BMI dan HbA1c_level memperlihatkan pola distribusi yang tidak alami, menunjukkan kemungkinan adanya nilai default atau pengisian massal, sementara blood_glucose_level juga tampak berpola dan tidak kontinu, dengan konsentrasi data pada nilai tertentu. Hal ini menunjukkan perlunya pembersihan dan penyeimbangan data sebelum digunakan untuk pemodelan.
 10. Multivariate Analysis
    <br>Pada tahapan ini melakukan analisis data pada fitur kategori dan numerik terhadap target (diabetes).
    - Fitur kategorikal
-     <br>![cat_corr](img/eda-cat_corr.png)
+     <br>![gender](img/multivariate_gender.png)
      <br>Gender tampaknya memiliki pengaruh terhadap prevalensi diabetes, dengan laki-laki menunjukkan kecenderungan lebih tinggi terkena diabetes dibanding perempuan.
-     <br>![multivariate_smoking](img/multivariate_smoking.png)
+     <br>![multivariate_smoking](img/multivariate_smoking_history.png)
      <br>Riwayat merokok berhubungan dengan prevalensi diabetes. Mantan perokok memiliki risiko tertinggi, yang bisa jadi disebabkan oleh dampak kumulatif merokok di masa lalu.
      
    - Fitur numerik
-     <br>![num_corr](img/eda-num_corr.png)
+     <br>![num_corr](img/multivariate_num_features.png)
      <br>Pada pola sebaran data grafik pairplot, terlihat bahwa age, HbA1c_level, blood_glucose_level, dan bmi memiliki korelasi yang cukup kuat dengan fitur target diabetes.
-     <br>![corr_matrix](img/eda-corr_matrix.png)
+     <br>![corr_matrix](img/multivariate_corr_matrix.png)
      <br>Terlihat bahwa fitur HbA1c_level, age, dan blood_glucose_level memiliki korelasi yang cukup berarti dengan diabetes. Sementara itu, fitur bmi, heart_disease, dan hypertension memiliki korelasi yang cukup lemah terhadap target.
 
 ## Data Preparation
-Pada bagian ini akan dilakukan 3 tahap persiapan data, yaitu:
-1. Encoding Fitur Kategori
+Pada bagian ini akan dilakukan 5 tahap persiapan data, yaitu:
+1. Menangani Data Duplikat
+   <br>Pada tahapan ini, data duplikat ditangani dengan cara menghapus data duplikat tersebut. Data duplikat dapat mengakibatkan bias analisis dan model overfitting karena nilai yang sama dihitung lebih dari sekali. Menghapus baris duplikat bertujuan memastikan keunikan dan integritas data sebelum melanjutkan ke tahap transformasi dan modeling.
+   <br>![image](img/handle_duplicated.png)
+2. Menangani Outliers
+   <br>Outliers adalah nilai data yang secara signifikan berbeda atau menyimpang jauh dari sebagian besar nilai lainnya dalam dataset. Menangani outliers penting untuk meningkatkan akurasi, kualitas, dan keandalan hasil analisis serta model prediktif. Outlier dideteksi dan pada tahap ini ditangani dengan menghapus data outliers tersebut.
+   <br>![image](img/handle_outliers.png)
+   <br>Menangani outlier dengan IQR Method, dimana:<br>
+   - Kuartil:
+     - Q1 (Kuartil 1) = nilai pada persentil ke-25
+     - Q3 (Kuartil 3) = nilai pada persentil ke-75
+   - IQR (Interquartile Range):
+     - IQR = Q3 - Q1
+   - Batas Outlier:
+     - Lower Bound = Q1 - 1.5 × IQR
+     - Upper Bound = Q3 + 1.5 × IQR
+3. Encoding Fitur Kategori
    <br>Mengubah data kategorik menjadi numerik agar bisa diproses oleh algoritma machine learning, dalam kasus ini menggunakan One-Hot Encoding dan Label Encoding. Karena algoritma machine learning pada umumnya hanya dapat memproses data numerik, sehingga untuk memudahkan proses pemodelan, data kategorik harus diencoding.
-   <br>![image](img/encoder.png)
-
-2. Train-Test-Split
+   <br>![image](img/encoding.png)
+4. Train-Test-Split
    <br>Dataset dibagi menjadi data latih (train) dan data uji (test) menggunakan train_test_split dari sklearn dengan rasio 80:20. Hal ini dilakukan untuk memisahkan data pada proses pelatihan dan evaluasi model.
-   <br>![image](img/split.png)
-3. Standarisasi
+   <br>![image](img/split_data.png)
+5. Standarisasi
    <br>Proses penskalaan fitur numerik agar berada dalam rentang yang seragam menggunakan StandardScaler. Hal ini bertujuan agar model bekerja adil dan optimal terhadap semua fitur, serta tidak ada bias skala.
    <br>![image](img/standarisasi.png)
 
 ## Modeling
-Tahapan ini bertujuan membangun model machine learning untuk memprediksi status diabetes (positif/negatif) berdasarkan fitur kesehatan yang tersedia. Pada proyek ini, saya membangun lima model machine learning, yaitu:
+<br>Tahapan ini bertujuan membangun model machine learning untuk memprediksi status diabetes (positif/negatif) berdasarkan fitur kesehatan yang tersedia. Pada proyek ini, saya membangun lima model machine learning, yaitu:
 1. Logistic Regression
 ```python
 # Model Logistic
@@ -276,7 +282,7 @@ Hyperparameter tuning bertujuan untuk mencari kombinasi parameter terbaik agar p
 
 | Hyperparameter      | Deskripsi                                                               |
 | ------------------- | ----------------------------------------------------------------------- |
-| `n_estimators`      | Jumlah pohon dalam forest. Dicoba nilai 100 dan 200.                     |
+| `n_estimators`      | Jumlah pohon dalam forest. Dicoba nilai 100 dan 200.                    |
 | `max_depth`         | Kedalaman maksimal pohon. Dicoba `None` (bebas) dan 20.                 |
 | `min_samples_split` | Minimum jumlah data yang dibutuhkan untuk membagi node. Dicoba 2 dan 5. |
 | `min_samples_leaf`  | Minimum jumlah data di setiap daun. Dicoba 1 dan 2.                     |
@@ -333,6 +339,7 @@ $$
 | **F1-score**  | 0.374427               | 0.506831 | 0.384993 | 0.564378         | 0.644903         | 0.65                              |
 | **ROC-AUC**   | 0.942800               | 0.831969 | 0.943392 | 0.772177         | 0.884897         | 0.947724                          |
 
+
 | Model                  | Train Accuracy | Test Accuracy |
 | ---------------------- | -------------- | ------------- |
 | Logistic Regression    | 0.845187       | 0.845229      |
@@ -345,13 +352,13 @@ $$
 
 **Visualisasi**
 - Confusion Matrix Kelima Model yang Dibangun
-  <br>![conf_matrix](img/conf_matrix.png)
+  <br>![conf_matrix](img/confusion_matrix.png)
 - Perbandingan Akurasi pada Setiap Model
   <br>![perbandingan_akurasi](img/perbandingan_akurasi.png)
 - Perbandingan Metrik pada Setiap Model
   <br>![perbandingan_metrik](img/perbandingan_metrik.png)
 - Perbandingan Hasil Prediksi dan Nilai Aktual (Randomm Forest - setelah tuning)
-  <br>![image](img/hasilpred_aktual.png)
+  <br>![image](img/perbandingan_hasil.png)
 - Feature Importance Berdasarkan Random Forest (setelah tuning)
   <br>![feature_important](img/feature_important.png)
 
