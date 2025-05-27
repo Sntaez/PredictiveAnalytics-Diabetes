@@ -357,7 +357,7 @@ $$
   <br>![perbandingan_akurasi](img/perbandingan_akurasi.png)
 - Perbandingan Metrik pada Setiap Model
   <br>![perbandingan_metrik](img/perbandingan_metrik.png)
-- Perbandingan Hasil Prediksi dan Nilai Aktual (Randomm Forest - setelah tuning)
+- Perbandingan Hasil Prediksi dan Nilai Aktual (Random Forest - setelah tuning)
   <br>![image](img/perbandingan_hasil.png)
 - Feature Importance Berdasarkan Random Forest (setelah tuning)
   <br>![feature_important](img/feature_important.png)
